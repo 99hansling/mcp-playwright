@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: mcp-playwright
+    env: node
+    plan: standard
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:server
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+    scaling:
+      minInstances: 1
+      maxInstances: 1
+      targetMemoryPercent: 60
+      targetCpuPercent: 60 
